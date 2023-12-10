@@ -45,7 +45,7 @@ public class PaymentController {
 		this.orderRepository=orderRepository;
 	}
 
-	@PostMapping("/payments/{orderId}")
+	// @PostMapping("/payments/{orderId}")
 	public ResponseEntity<PaymentLinkResponse>createPaymentLink(@PathVariable Long orderId,
 			@RequestHeader("Authorization")String jwt)
 					throws RazorpayException, UserException, OrderException{
@@ -53,7 +53,7 @@ public class PaymentController {
 		Order order=orderService.findOrderById(orderId);
 		 try {
 		      // Instantiate a Razorpay client with your key ID and secret
-		      RazorpayClient razorpay = new RazorpayClient("rzp_test_kTsRSaDC8hwztX", "LieoD1s9mxMIv569PcgRDMcU");
+		      RazorpayClient razorpay = new RazorpayClient("rzp_test_L0xKj1EMPFwtT4", "bYmEDNEurbXD1hDd87C3UKoN");
 
 		      // Create a JSON object with the payment link request parameters
 		      JSONObject paymentLinkRequest = new JSONObject();
@@ -113,9 +113,9 @@ public class PaymentController {
 //		order_id
 	}
 
-  @GetMapping("/payments")
+  // @GetMapping("/payments")
   public ResponseEntity<ApiResponse> redirect(@RequestParam(name="payment_id") String paymentId,@RequestParam("order_id")Long orderId) throws RazorpayException, OrderException {
-	  RazorpayClient razorpay = new RazorpayClient("rzp_test_kTsRSaDC8hwztX", "LieoD1s9mxMIv569PcgRDMcU");
+	  RazorpayClient razorpay = new RazorpayClient("rzp_test_L0xKj1EMPFwtT4", "bYmEDNEurbXD1hDd87C3UKoN");
 	  Order order =orderService.findOrderById(orderId);
 
 	  try {
